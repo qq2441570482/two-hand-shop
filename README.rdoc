@@ -10,3 +10,6 @@
 <b>beta 0.2</b>
 - 修改了数据库框架
 - 部署在heroku上，网址为：https://maimaimai.herokuapp.com/
+
+<b>beta 0.3</b>
+- 简易的注册和登录模块
