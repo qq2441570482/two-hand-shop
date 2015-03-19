@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'auth' => 'users#auth'
   post 'register_center' => 'users#register_center'
 
+  get 'logout' => 'users#logout'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
