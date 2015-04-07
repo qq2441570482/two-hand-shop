@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def register
   end
 
+  def setprofile
+  end
+
   def auth
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])

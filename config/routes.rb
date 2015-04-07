@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'logout' => 'users#logout'
 
+  get 'users/setprofile' => 'users#setprofile'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
