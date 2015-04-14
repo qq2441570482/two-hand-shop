@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:changepassword,:setprofile, :verifyemail, :uploadpicture]
   before_action :find_a_user, only: [:confirmchangepassword, 
+                                     :confirmchangeprofile,
                                      :setprofile, 
-                                     :confirmchangeprofile, 
                                      :verifyemail,
                                      :sendverifyemail,
                                      :uploadpicture,
-                                     :confirmuploadpicture
+                                     :confirmuploadpicture,
                                      :destroy]
 
   before_action :new_a_user, only: [:new, :create, :register_center]                                   
@@ -134,7 +134,11 @@ class UsersController < ApplicationController
   end
 
   def find_a_user
-    @user = User.find(params[:id])
+    if params[:id].present?
+      @user = User.find(params[:id])
+    else
+      @user = User.find(session[:user_id])
+    end
   end
 
   def new_a_user
