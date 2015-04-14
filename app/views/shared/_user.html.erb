@@ -1,20 +1,8 @@
 <div class="col-md-2">
-	<div class="panel panel-default">
-		<div class="panel-body">
-			<ul>
-				<li>
-					<%= link_to '个人信息', users_setprofile_path %>
-				</li>
-				<li>
-					<%= link_to '上传头像' %>
-				</li>
-				<li>
-					<%= link_to '验证邮箱' %>
-				</li>
-				<li>
-					<%= link_to '修改密码' %>
-				</li>
-			</ul>
-		</div>
-	</div>				
+  <div class= "list-group">
+	<%= link_to '个人信息', users_setprofile_path, class: 'list-group-item' %>
+	<%= link_to '上传头像', users_uploadpicture_path, class: 'list-group-item' %>
+	<%= link_to '验证邮箱', users_verifyemail_path, class: 'list-group-item' %>
+	<%= link_to '修改密码', users_changepassword_path, class: 'list-group-item' %>
+  </div>
 </div>

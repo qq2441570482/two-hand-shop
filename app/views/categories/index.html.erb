@@ -1,0 +1,42 @@
+<% content_for :title, '商品目录' %>
+<div class="main">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li><%= link_to '新增商品目录', new_category_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-default">
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>名称</td>
+                  <td>修改</td>
+                  <td>删除</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @categorys.each do |category| %>
+                <tr>
+                  <td><%= category.id %></td>
+                  <td><%= category.name %></td>
+                  <td><%= link_to '修改', edit_category_path(category) %></td>
+                  <td><%= link_to '删除', category_path(category), method: :delete, data:{confirm: '你确定要删除吗？'} %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

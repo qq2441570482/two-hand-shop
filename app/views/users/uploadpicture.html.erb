@@ -1,0 +1,33 @@
+<div class="main">
+  <div class="container">
+	<div class="rows">
+	  <%= render 'shared/user' %>	
+	  <div class="col-md-10">
+	    <div class="panel panel-default">
+		  <div class="panel-body">
+
+		    <div class="col-md-3">
+		      <%= image_tag @user.avatar.url, class: 'person_image  ' %>
+		    </div>
+
+		    <div class="col-md-8">
+		      <%= form_for @user, :url => {:action => :confirmuploadpicture}, :html => {:class => 'form-horizontal'} do |f| %>
+		      <div class="form-group">
+		        <div class="col-md-8">
+                  <%= f.file_field :avatar, class: 'form-control' %>
+		        </div>
+              </div>
+
+		      <div class="form-group">
+		        <div class="col-md-8">
+		          <%= f.submit '上传头像', class: 'btn btn-danger btn-block' %>
+		        </div>
+              </div>
+		      <% end %>	
+		    </div>
+		  </div>
+	    </div>
+	  </div>  
+	</div>
+  </div>
+</div>

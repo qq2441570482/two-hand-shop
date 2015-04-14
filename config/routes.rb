@@ -11,7 +11,36 @@ Rails.application.routes.draw do
 
   get 'users/setprofile' => 'users#setprofile'
 
+  get 'users/changepassword' => 'users#changepassword'
 
+  post 'users/confirmchangepassword' => 'users#confirmchangepassword'
+
+  patch 'users/confirmchangeprofile'  => 'users#confirmchangeprofile'
+
+  patch 'users/sendverifyemail' => 'users#sendverifyemail'
+
+  patch 'users/confirmuploadpicture' => 'users#confirmuploadpicture'
+
+  get 'users/verifyemail' => 'users#verifyemail'
+
+  get 'users/uploadpicture' => 'users#uploadpicture'
+
+  get 'show/:id' => 'welcome#show', as: :show
+
+  get 'ask' => 'welcome#ask'
+
+  resources :information, only: [:new, :create]
+  resources :products, only: [:new, :create]
+
+  resources :information_users
+  resources :user_products 
+  
+  resources :grades
+  resources :majors
+
+  resources :categories
+  resources :users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

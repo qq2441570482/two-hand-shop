@@ -1,0 +1,37 @@
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-default">
+              <thead>
+                <tr>
+                  <td>标题</td>
+                  <td>价格</td>
+                  <td>所属类别</td>
+                  <td>描述</td>
+                  <td>修改</td>
+                  <td>删除</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @user_products.each do |user_product| %>
+                <tr>
+                  <td><%= link_to user_product.product.title, user_product_path(user_product) %></td>
+                  <td><%= user_product.product.price %></td>
+                  <td><%= user_product.product.category.name %></td>
+                  <td><%= user_product.product.description %></td>
+                  <td><%= link_to '修改', edit_user_product_path(user_product) %></td>
+                  <td><%= link_to '删除', user_product_path(user_product), method: :delete, data:{confirm: '你确定删除吗？'}, class: 'btn btn-danger' %>
+                  </td>
+                </tr>  
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

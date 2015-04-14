@@ -1,0 +1,41 @@
+<div class="main">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li><%= link_to '新增专业', new_major_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <table class="table table-default">
+              <thead>
+                <tr>
+                  <td>ID</td>
+                  <td>名称</td>
+                  <td>修改</td>
+                  <td>删除</td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @majors.each do |major| %>
+                <tr>
+                  <td><%= major.id %></td>
+                  <td><%= major.name %></td>
+                  <td><%= link_to '修改', edit_major_path(major) %></td>
+                  <td><%= link_to '删除', major_path(major), method: :delete, data:{confirm: '你确定要删除吗？'} %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

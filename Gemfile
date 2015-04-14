@@ -37,6 +37,12 @@ gem "factory_girl_rails"
 
 gem 'pry-rails'
 
+gem 'carrierwave'
+
+gem 'cancan'
+
+gem "rolify"
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -2,113 +2,32 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2">
-        <div class="panel panel-default">
-          <ul class="nav nav-pills nav-stacked">
+       
+          <div class="list-group">
             <% @categories.each do |catagory| %>
-                <li role="presentation">
-                  <%= link_to catagory.name, {:condition => catagory.id} %>
-                </li>
+              <%= link_to catagory.name, {:condition => catagory.id}, class: 'list-group-item' %>
             <% end %>
-          </ul>
-        </div>
+          </div>
       </div>
-
+      
       <div class="col-md-10">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
-            </div>
-            <div class="col-md-3">
-              <a href="#" class="thumbnail">
-                <img src="/kdj.jpg" alt="">
-              </a>
+      <% @products.each do |product| %>
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-body">
+               <%= link_to show_path(product), class: 'thumbnail' do %>
+                <%= image_tag product.avatar.url %>
+              <% end %>
+              <div>
+                <%= product.title %>                
+              </div>
+              <div>
+                <%= product.description %>
+              </div>  
             </div>
           </div>
-
         </div>
+      <% end %>
       </div>
     </div>
   </div>
