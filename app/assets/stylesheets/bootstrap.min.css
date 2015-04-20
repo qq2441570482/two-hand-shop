@@ -1127,7 +1127,6 @@ img {
 .carousel-inner > .item > a > img {
   display: block;
   max-width: 100%;
-  height: auto;
 }
 .img-rounded {
   border-radius: 6px;
@@ -4900,8 +4899,6 @@ a.badge:focus {
   line-height: 1.42857143;
   background-color: #fff;
   border-radius: 4px;
-  width: 166px;
-  height: 166px;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;
           transition: border .2s ease-in-out;

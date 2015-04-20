@@ -2,7 +2,11 @@
   <div class="container">
 	<div class="row">
 	  <div class="col-md-offset-2 col-md-3">
-		<%= image_tag @product.avatar.url, class: 'img-rounded' %>
+	    <% unless @product.avatar.url %>
+	      <%= image_tag 'zwtp.jpg', class: 'show_product_image'  %>
+	    <% else %>
+		  <%= image_tag @product.avatar.url, class: 'show_product_image' %>
+	    <% end %>
 	  </div>
 			
 	  <div class="col-md-6">
