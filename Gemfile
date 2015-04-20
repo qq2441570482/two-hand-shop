@@ -41,11 +41,13 @@ gem 'carrierwave'
 
 gem 'cancan'
 
-gem "rolify"
+gem 'rolify'
+
+gem 'kaminari'
 
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

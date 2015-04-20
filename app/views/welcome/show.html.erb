@@ -1,19 +1,43 @@
 <div class="main">
   <div class="container">
 	<div class="row">
-	  <div class="col-md-4">
+	  <div class="col-md-offset-2 col-md-3">
 		<%= image_tag @product.avatar.url, class: 'img-rounded' %>
 	  </div>
 			
 	  <div class="col-md-6">
 	    <div>
-	      <%= @product.title %>	
+	      <h3><%= @product.title %></h3>	
 	    </div>
 	    <div>
-	      卖家: <%= @product.users[0].username%><br>
-	      专业: <%= @product.users[0].major.name %><br>
-	      手机: <%= @product.users[0].phone %><br>
-	      邮箱: <%= @product.users[0].email %>
+	    <table class="table">
+	      <tr>
+	      	<td>卖家:</td>
+	      	<td><%= @product.users[0].username%></td>
+	      </tr>
+	      <tr>
+	      	<td>专业:</td>
+	      	<td><%= @product.users[0].grade.name %><%= @product.users[0].major.name %></td>
+	      </tr>
+	      <tr>
+	      	<td>手机:</td>
+	      	<td><%= @product.users[0].phone %></td>
+	      </tr>
+	      <tr>
+	      	<td>邮箱:</td>
+	      	<td><%= @product.users[0].email %>&nbsp &nbsp &nbsp
+              <% if @product.users[0].email_status %> 
+                <span class="glyphicon glyphicon-ok errors" aria-hidden="true">邮箱已验证</span>
+              <% else %>
+                <span class="glyphicon glyphicon-remove errors" aria-hidden="true">邮箱未验证</span>
+              <% end %>
+	      	</td>
+	      </tr>
+	      <tr>
+	      	<td>商品介绍</td>
+	      	<td><%= @product.description %></td>
+	      </tr>
+	    </table>
 	    </div>
 	  </div>
 	</div>

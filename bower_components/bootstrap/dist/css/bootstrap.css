@@ -2269,7 +2269,7 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -4614,7 +4614,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination {
   display: inline-block;
   padding-left: 0;
-  margin: 20px 0;
   border-radius: 4px;
 }
 .pagination > li {
@@ -4900,7 +4899,8 @@ a.badge:focus {
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;
-  border: 1px solid #ddd;
+  width: 166px;
+  height: 166px;
   border-radius: 4px;
   -webkit-transition: border .2s ease-in-out;
        -o-transition: border .2s ease-in-out;

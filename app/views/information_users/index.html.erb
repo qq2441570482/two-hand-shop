@@ -1,12 +1,18 @@
 <div class="main">
   <div class="container">
     <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <%= link_to '发布求购消息', new_information_path, class: 'list-group-item' %>
+        </div>
+      </div>
       <div class="col-md-9">
         <div class="panel panel-default">
           <div class="panel-body">
             <table class="table table-default">
               <thead>
-                <tr>
+                <tr class="table_text">
+                  <td>ID</td>
                   <td>标题</td>
                   <td>价格</td>
                   <td>所属类别</td>
@@ -17,7 +23,8 @@
               </thead>
               <tbody>
                 <% @information_users.each do |information_user| %>
-                <tr>
+                <tr class="table_text">
+                  <td><%= information_user.id %></td>
                   <td><%= link_to information_user.information.title, information_user_path(information_user) %></td>
                   <td><%= information_user.information.price %></td>
                   <td><%= information_user.information.category.name %></td>
@@ -28,6 +35,9 @@
                 <% end %>
               </tbody>
             </table>
+            <div class="table-paginate">
+              <%= paginate @information_users %>
+            </div>
           </div>
         </div>
       </div>

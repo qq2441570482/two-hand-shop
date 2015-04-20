@@ -18,17 +18,26 @@
                <%= link_to show_path(product), class: 'thumbnail' do %>
                 <%= image_tag product.avatar.url %>
               <% end %>
-              <div>
-                <%= product.title %>                
+              <div class="product_title">
+                <%= product.title %>
               </div>
-              <div>
-                <%= product.description %>
-              </div>  
+              <div class="product_price">
+              ￥<%= product.price %>
+              <%= link_to '立即购买', show_path(product), class: 'btn btn-sm btn-danger pull-right' %>
+              </div>
             </div>
           </div>
         </div>
       <% end %>
       </div>
+     
     </div>
+     <div class="row">
+        <div class="col-md-offset-2">
+          <div class="paginate_products">
+            <%= paginate @products %>
+          </div>    
+        </div>
+      </div>
   </div>
 </div>

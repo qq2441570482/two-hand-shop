@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     @categories = Category.all
-    @products = Product.all
+    @products = Product.where(status: true).page(params[:page]).per(8)
     if params[:condition].present?
     	@products = @products.where(category_id: params[:condition].to_i)
     end
@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   end
 
   def ask
-    @information_users = InformationUser.all
+    @information_users = InformationUser.all.page(params[:page]).per(10)
   end
 
 end

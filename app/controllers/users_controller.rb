@@ -7,37 +7,46 @@ class UsersController < ApplicationController
                                      :sendverifyemail,
                                      :uploadpicture,
                                      :confirmuploadpicture,
-                                     :destroy]
+                                     :destroy,
+                                     :setstatus,
+                                     :applyseller]
 
-  before_action :new_a_user, only: [:new, :create, :register_center]                                   
+  before_action :new_a_user, only: [:new, :create, :register_center]
+  before_action :judge_user_status, only: [:index]
 
   include UsersHelper
   
   def login
+    @user = User.new
   end
 
   def register
+    @user = User.new
   end
 
   def setprofile
   end
 
   def auth
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password])
-      sign_in(user)
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])&& @user.status == true
+      sign_in(@user)
       redirect_to root_path
     else
-      render :login
+      flash[:errors] = '用户名或密码错误'
+      redirect_to :login
     end
   end
 
   def register_center
-    @user.email = params[:email]
-    @user.password = params[:password]
-    @user.password_confirmation = params[:password_confirmation]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
+    @user.status = true
+    @user.info_status = false
     if @user.save
       sign_in(@user)
+      give_a_person_a_status(@user)
       redirect_to root_path
     else
       render :register
@@ -73,6 +82,9 @@ class UsersController < ApplicationController
     @user.phone = params[:user][:phone]
     @user.address = params[:user][:address]
     @user.gender = string_transfer_bool(params[:user][:gender])
+    if @user.username && @user.grade_id && @user.major_id && @user.phone && @user.address && @user.gender
+       @user.info_status = true
+    end    
     if @user.save
       redirect_to users_setprofile_path
     else
@@ -83,7 +95,18 @@ class UsersController < ApplicationController
 
   def sendverifyemail
     #发送邮件的逻辑操作, 还需要进行测试
-    UserMailer.verifyemail(@user)
+    @@number = rand(9999)
+    UserMailer.verifyemail(@user,@@number).deliver
+    redirect_to users_verifyemail_path
+  end
+
+  def confirmverifyemail
+    if @@number = params[:token]
+      user = User.find(params[:id])
+      user.email_status = true
+      user.save
+      redirect_to users_verifyemail_path
+    end
   end
 
   def confirmuploadpicture
@@ -96,7 +119,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(10)
   end
 
   def new
@@ -112,6 +135,8 @@ class UsersController < ApplicationController
     @user.major_id = params[:major].to_i
     @user.password = "123456"
     @user.password_confirmation = "123456"
+    @user.status = true
+    @user.add_role :admin
     if @user.save
       redirect_to users_path
     else
@@ -122,6 +147,19 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_path
+  end
+
+  def setstatus
+    unless @user.status
+      @user.status = true
+    else
+      @user.status = false
+    end
+    @user.save
+    redirect_to users_path
+  end
+
+  def applyseller
   end
 
   private
@@ -144,4 +182,5 @@ class UsersController < ApplicationController
   def new_a_user
     @user = User.new
   end
+
 end

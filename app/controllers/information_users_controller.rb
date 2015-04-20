@@ -3,7 +3,7 @@ class InformationUsersController < ApplicationController
   before_action :find_a_information_user, only: [:edit,:update,:destroy,:show]
 
   def index
-    @information_users = InformationUser.where(user_id: session[:user_id])
+    @information_users = InformationUser.where(user_id: session[:user_id]).page(params[:page]).per(8)
   end
 
   def edit

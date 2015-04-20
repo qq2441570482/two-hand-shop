@@ -4,12 +4,17 @@
       <%= form_for @category, html: {class: 'form-horizontal'}  do |f| %>
         <div class="form-group">
           <%= f.label '名称', class: 'col-md-2 control-label' %>
-          <div class="col-md-8">
+          <div class="col-md-7">
             <%= f.text_field :name, class: 'form-control' %>
           </div>
+          <% if @category.errors.any? %>
+          <div class="col-md-3">
+            <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @category.errors[:name][0], class: 'control-label errors' %>
+          </div>
+          <% end %>
         </div>
         <div class="form-group">
-          <div class="col-md-offset-2 col-md-8">
+          <div class="col-md-offset-2 col-md-7">
             <%= f.submit '提交', class: 'btn btn-danger btn-block' %>
           </div>
         </div>

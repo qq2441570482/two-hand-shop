@@ -4,4 +4,9 @@ class Product < ActiveRecord::Base
 
 	has_many :user_products, dependent: :destroy
 	has_many :users, through: :user_products
+
+
+	# has_many :favorites, dependent: :destroy
+	# has_many :users, through: :favorites
+
 end

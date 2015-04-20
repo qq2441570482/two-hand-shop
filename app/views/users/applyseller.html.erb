@@ -1,0 +1,80 @@
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <p class="well"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp申请成为卖家必须填好相关个人资料</p>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>
+                    <% if @user.username %>
+                    <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
+                    <% else %>
+                     <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
+                    <% end %>
+                  </td>
+                  <td>用户名不能为空</td>
+                </tr>
+                <tr>
+                  <td>
+                    <% if @user.grade %>
+                    <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
+                    <% else %>
+                     <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
+                    <% end %>
+                  </td>
+                  <td>年级不能为空</td>
+                </tr>
+                <tr>
+                  <td>
+                    <% if @user.major %>
+                    <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
+                    <% else %>
+                     <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
+                    <% end %>
+                  </td>
+                  <td>专业不能为空</td>
+                </tr>
+                <tr>
+                  <td>
+                    <% if @user.gender %>
+                    <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
+                    <% else %>
+                     <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
+                    <% end %>
+                  </td>
+                  <td>性别不能为空</td>
+                </tr>
+                <tr>
+                  <td>
+                    <% if @user.phone %>
+                    <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
+                    <% else %>
+                     <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
+                    <% end %>
+                  </td>
+                  <td>电话不能为空</td>
+                </tr>
+                <tr>
+                  <td>
+                    <% if @user.address %>
+                    <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
+                    <% else %>
+                     <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
+                    <% end %>
+                  </td>
+                  <td>联系地址不能为空</td>
+                </tr>
+              </tbody>
+            </table>
+            <div>
+              <%= link_to '去完善个人信息', users_setprofile_path, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

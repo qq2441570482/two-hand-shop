@@ -3,7 +3,7 @@ class UserProductsController < ApplicationController
   before_action :find_a_user_product, only: [:edit,:update, :destroy]
 
   def index
-  	@user_products = UserProduct.where(user_id: session[:user_id])
+  	@user_products = UserProduct.where(user_id: session[:user_id]).page(params[:page]).per(8)
   end
 
   def edit

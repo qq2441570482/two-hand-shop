@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'users/changepassword' => 'users#changepassword'
 
+  get 'users/confirmverifyemail/:id/:token' => 'users#confirmverifyemail'
+
   post 'users/confirmchangepassword' => 'users#confirmchangepassword'
 
   patch 'users/confirmchangeprofile'  => 'users#confirmchangeprofile'
@@ -23,14 +25,20 @@ Rails.application.routes.draw do
 
   get 'users/verifyemail' => 'users#verifyemail'
 
+  get 'users/setstatus/:id' => 'users#setstatus', as: :setstatus
+
+  get 'products/setstatus/:id' => 'products#setstatus', as: :products_setstatus
+
   get 'users/uploadpicture' => 'users#uploadpicture'
 
   get 'show/:id' => 'welcome#show', as: :show
 
   get 'ask' => 'welcome#ask'
 
+  get 'users/applyseller'  => 'users#applyseller'
+
   resources :information, only: [:new, :create]
-  resources :products, only: [:new, :create]
+  resources :products
 
   resources :information_users
   resources :user_products 
@@ -41,6 +49,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :users
   
+  resources :favorites
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

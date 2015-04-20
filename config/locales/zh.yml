@@ -1,0 +1,38 @@
+zh:
+  activerecord:
+    errors:
+      models:
+        grade:
+          attributes:
+            name:
+              blank: '年级名称不能为空'
+        major:
+          attributes:
+            name:
+              blank: '专业名称不能为空' 
+        category:
+          attributes:
+            name:
+              blank: '商品目录名称不能为空'
+
+        user:
+          attributes:
+            email:
+              blank: '邮箱不能为空'
+              invalid: '邮箱格式不合法'
+              taken: '邮箱已经被注册'
+            password:
+              blank: '密码不能为空'  
+            password_confirmation:
+              blank: '确认密码不能为空'
+              confirmation: '两次密码输入不一致'
+
+
+  views:
+    pagination:
+      first: '首页'
+      last: '末页'
+      previous: '上一页'
+      next: '下一页'
+
+

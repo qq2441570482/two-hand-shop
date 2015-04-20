@@ -2,15 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-      	<div class="panel panel-default">
-      	  <div class="panel-body">
-      		<ul>
-      		  <li>
-      		  	<%= link_to '出售的所有物品', user_products_path %>
-      		  </li>
-      		</ul>
-      	  </div>
-      	</div>
+    		<div class="list-group">
+    		  <%= link_to '出售的所有物品', user_products_path, class: 'list-group-item' %>
+    		</div>
       </div>
       <div class="col-md-9">
         <div class="panel panel-default">

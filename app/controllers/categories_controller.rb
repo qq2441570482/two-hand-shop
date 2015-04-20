@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   before_action :find_a_category, only: [:destroy, :edit, :update]
   before_action :new_a_category, only: [:new, :create]
   before_action :create_and_update, only: [:create, :update]
+  before_action :judge_user_status, only: :index
 
   def index
   	@categorys = Category.all

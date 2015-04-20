@@ -3,6 +3,7 @@ class GradesController < ApplicationController
   before_action :find_a_grade, only: [:destroy, :edit, :update]
   before_action :new_a_grade, only: [:new, :create]
   before_action :create_and_update, only: [:create, :update]
+  before_action :judge_user_status, only: :index
 
   def index
   	@grades = Grade.all
@@ -31,7 +32,6 @@ class GradesController < ApplicationController
 
   def create_and_update
     @grade.name = params[:grade][:name]
-    binding.pry
     if @grade.save
       redirect_to grades_path 
     else

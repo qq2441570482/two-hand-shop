@@ -2,12 +2,8 @@
   <div class="container">
     <div class="row">
     <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <ul>
-            <li><%= link_to '新增专业', new_major_path %></li>
-          </ul>
-        </div>
+      <div class="list-group">
+        <%= link_to '新增专业', new_major_path, class: 'list-group-item' %>
       </div>
     </div>
       <div class="col-md-9">

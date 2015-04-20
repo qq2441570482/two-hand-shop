@@ -8,22 +8,38 @@
 		  	<h3>求购专区</h3>
 		  </div>
 		  <div class="panel-body">
-		    <ul class="list-group">
-		      <% @information_users.each do |information_user| %>
-		        <li class="list-group-item">
-		        	<div>
-		        		<%= information_user.information.title %>
-		        	</div>
-		        	<div>
-		        		<%= information_user.information.description %>
-		        	</div>
-		        	<div>
-		        		联系人:<%= information_user.user.username %><br>
-		        		联系电话:<%= information_user.user.phone %>
-		        	</div>
-		        </li>
-		      <% end %>
-		    </ul>
+		    <% @information_users.each do |information_user| %>
+		   
+		    <div class="panel">
+		      <div class="panel-body">
+		      	<table class="table">
+		      	<tr>
+		      	    <td colspan="2"><h4><%= information_user.information.title %></h4></td>
+		      	</tr>
+		      	  <tr>
+		      	  	<td>买家</td>
+		      	  	<td><%= information_user.user.username %></td>
+		      	  </tr>
+		      	  <tr>
+		      	  	<td>专业</td>
+		      	  	<td><%= information_user.user.grade.name %><%= information_user.user.major.name %></td>
+		      	  </tr>
+		      	  <tr>
+		      	  	<td>手机</td>
+		      	  	<td><%= information_user.user.phone %></td>
+		      	  </tr>
+
+		      	  <tr>
+		      	  	<td>邮箱</td>
+		      	  	<td><%= information_user.user.email %></td>
+		      	  </tr>		
+		      	</table>
+		      </div>	
+		    </div>
+		    <% end %>
+		    <div class="pull-right">
+		    	<%= paginate @information_users %>
+		    </div>
 		  </div>
 		</div>
 	  </div>
