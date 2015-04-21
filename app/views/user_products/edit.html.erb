@@ -1,6 +1,12 @@
 <div class="main">
   <div class="container">
     <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <%= link_to '出售的所有物品信息', user_products_path, class: 'list-group-item' %>
+          <%=  link_to '新增出售物品', new_product_path, class: 'list-group-item' %>
+        </div>
+      </div>
       <div class="col-md-9">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -10,6 +16,9 @@
                 <%= i.label '标题', class: 'col-md-2 control-label' %>
                 <div class="col-md-8">
                   <%= i.text_field :title, class: 'form-control' %>
+                  <% if @user_product.product.errors[:title].any? %>
+                   <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @user_product.product.errors[:title][0], class: 'control-label errors' %>
+                  <% end %>
                 </div>
               </div>
 
@@ -24,6 +33,9 @@
                 <%= i.label '价格', class: 'col-md-2 control-label' %>
                 <div class="col-md-8">
                   <%= i.text_field :price, class: 'form-control' %>
+                  <% if @user_product.product.errors[:price].any? %>
+                   <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @user_product.product.errors[:price][0], class: 'control-label errors' %>
+                  <% end %>
                 </div>
               </div>
 
@@ -31,6 +43,9 @@
                 <%= i.label '描述', class: 'col-md-2 control-label' %>
                 <div class="col-md-8">
                   <%= i.text_area :description, class: 'form-control', rows: 5 %>
+                  <% if @user_product.product.errors[:description].any? %>
+                   <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @user_product.product.errors[:description][0], class: 'control-label errors' %>
+                  <% end %>
                 </div>
               </div>
 

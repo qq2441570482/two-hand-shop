@@ -19,6 +19,7 @@ class UserProductsController < ApplicationController
   	if product.save
   	  redirect_to user_products_path
   	else
+      @categories = Category.all
   	  render :edit
   	end
   end

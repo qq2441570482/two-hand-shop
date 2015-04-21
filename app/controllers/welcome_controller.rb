@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
   end
 
   def ask
-    @information_users = InformationUser.all.page(params[:page]).per(10)
+    @information_users = InformationUser.where(status: true).page(params[:page]).per(8)
   end
 
 end

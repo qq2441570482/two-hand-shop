@@ -66,6 +66,7 @@ class UsersController < ApplicationController
       @user.update(password: params[:user][:password])
       redirect_to users_setprofile_path
     else
+      flash[:password_errors] = '修改密码发生错误'
       render :changepassword
     end
   end
@@ -82,12 +83,14 @@ class UsersController < ApplicationController
     @user.phone = params[:user][:phone]
     @user.address = params[:user][:address]
     @user.gender = string_transfer_bool(params[:user][:gender])
-    if @user.username && @user.grade_id && @user.major_id && @user.phone && @user.address && @user.gender
+    if @user.username? && @user.grade_id? && @user.major_id? && @user.phone? && @user.address? && @user.gender?
        @user.info_status = true
     end    
     if @user.save
       redirect_to users_setprofile_path
     else
+      @grades = Grade.all
+      @majors = Major.all
       render :setprofile
     end
   end
@@ -110,10 +113,15 @@ class UsersController < ApplicationController
   end
 
   def confirmuploadpicture
-    @user.avatar = params[:user][:avatar]
-    if @user.save
-      redirect_to users_uploadpicture_path
+    if params[:user]
+      @user.avatar = params[:user][:avatar]
+      if @user.save
+        redirect_to users_uploadpicture_path
+      else
+        render :uploadpicture
+      end
     else
+      flash[:errors] = '照片不能为空'
       render :uploadpicture
     end
   end
@@ -145,6 +153,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    #把相应的product删除掉
+    @user.products.each do |product|
+      Product.destroy(product.id)
+    end
     @user.destroy
     redirect_to users_path
   end
@@ -152,8 +164,24 @@ class UsersController < ApplicationController
   def setstatus
     unless @user.status
       @user.status = true
+      @user.products.each do |product|
+        product.status = true
+        product.save
+      end
+      @user.information_users.each do |information_user|
+        information_user.status = true
+        information_user.save
+      end
     else
       @user.status = false
+      @user.products.each do |product|
+        product.status = false
+        product.save
+      end
+      @user.information_users.each do |information_user|
+        information_user.status = false
+        information_user.save
+      end
     end
     @user.save
     redirect_to users_path

@@ -9,7 +9,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <% if @user.username %>
+                    <% if @user.username? %>
                     <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
                     <% else %>
                      <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
@@ -19,7 +19,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <% if @user.grade %>
+                    <% if @user.grade_id? %>
                     <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
                     <% else %>
                      <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <% if @user.major %>
+                    <% if @user.major_id? %>
                     <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
                     <% else %>
                      <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
@@ -39,7 +39,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <% if @user.gender %>
+                    <% if @user.gender? %>
                     <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
                     <% else %>
                      <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <% if @user.phone %>
+                    <% if @user.phone? %>
                     <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
                     <% else %>
                      <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>
@@ -59,7 +59,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <% if @user.address %>
+                    <% if @user.address? %>
                     <span class="glyphicon glyphicon-ok gly-color" aria-hidden="true"></span>
                     <% else %>
                      <span class="glyphicon glyphicon-remove gly-color" aria-hidden="true"></span>

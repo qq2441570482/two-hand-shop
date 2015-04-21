@@ -17,10 +17,10 @@ Category.create(name: '服装服饰')
 
 
 Major.create(name: '计算机科学与技术')
-Major.create(name: '通信工程')
+Major.create(name: '软件工程')
 
-Grade.create(name: '大一')
-Grade.create(name: '大二')
-Grade.create(name: '大三')
-Grade.create(name: '大四')
+Grade.create(name: '2011级')
+Grade.create(name: '2012级')
+Grade.create(name: '2013级')
+Grade.create(name: '2014级')
 			  

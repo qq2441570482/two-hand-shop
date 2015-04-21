@@ -16,25 +16,24 @@ class ProductsController < ApplicationController
   def create
   	#首先插入到商品表中
   	#其次插入到一张联合表中
-  	product = Product.new
-  	product.title = params[:product][:title]
-  	product.category_id = params[:category].to_i
-  	product.price = params[:product][:price].to_f
-  	product.avatar = params[:product][:avatar]
-  	product.description = params[:product][:description]
-    product.status = true
-  	product.save
-
-  	userProduct = UserProduct.new
-  	userProduct.user_id = session[:user_id].to_i
-  	userProduct.product_id = product.id
-  	
-
-  	if userProduct.save
-  		redirect_to root_path
-  	else
-  		render :new
-  	end
+    @product = Product.new
+    @categories = Category.all
+    @product.title = params[:product][:title]
+    @product.category_id = params[:category].to_i
+    @product.price = params[:product][:price].to_f
+    @product.avatar = params[:product][:avatar]
+    @product.description = params[:product][:description]
+    @product.status = true
+    if @product.save
+      @product.save
+      userProduct = UserProduct.new
+      userProduct.user_id = session[:user_id].to_i
+      userProduct.product_id = @product.id  
+      userProduct.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -54,7 +53,7 @@ class ProductsController < ApplicationController
 
   def require_complete_info
     user = User.find(session[:user_id])
-    unless user.username && user.grade && user.major && user.gender && user.phone && user.address 
+    unless user.info_status
       redirect_to users_setprofile_path
     end 
   end

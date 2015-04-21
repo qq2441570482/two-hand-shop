@@ -19,6 +19,7 @@ class InformationUsersController < ApplicationController
   	if information.save
   	  redirect_to information_users_path
   	else
+      @categories = Category.all
       render :edit
   	end
   end
@@ -26,6 +27,7 @@ class InformationUsersController < ApplicationController
   def destroy
   	#实现了级联删除, 删除了information表，就同时也是删除了第三张关联表
   	@information_user.information.destroy
+    redirect_to information_users_path
   end
 
   private 

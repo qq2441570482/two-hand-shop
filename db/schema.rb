@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20150417055054) do
   create_table "information_users", force: true do |t|
     t.integer  "user_id"
     t.integer  "information_id"
+    t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

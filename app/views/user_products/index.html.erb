@@ -29,7 +29,7 @@
                   <td class="table_text">￥<%= user_product.product.price %></td>
                   <td class="table_text"><%= user_product.product.category.name %></td>
                   <td class="table_text"><%= user_product.product.description %></td>
-                  <td class="table_text"><%= link_to '修改', edit_user_product_path(user_product) %></td>
+                  <td class="table_text"><%= link_to '修改', edit_user_product_path(user_product), class: 'btn btn-default' %></td>
                   <td class="table_text"><%= link_to '删除', user_product_path(user_product), method: :delete, data:{confirm: '你确定删除吗？'}, class: 'btn btn-danger' %>
                   </td>
                 </tr>  

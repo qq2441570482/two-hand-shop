@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2">
-       
           <div class="list-group">
             <% @categories.each do |catagory| %>
               <%= link_to catagory.name, {:condition => catagory.id}, class: 'list-group-item' %>
@@ -17,13 +16,13 @@
             <div class="panel-body">
                 <%= link_to show_path(product), class: 'thumbnail' do %>
                    <% unless product.avatar.url %>
-                     <%= image_tag 'zwtp.jpg', class: 'product_image'  %>
+                     <%= image_tag 'zwtp.jpg', class: 'product_image_index'  %>
                    <% else %>
                     <%= image_tag product.avatar.url, class: 'product_image' %>
                    <% end %>
                 <% end %>
               <div class="product_title">
-                <%= product.title[0..10]+'...' %>
+                <%= product.title[0..7]+'...' %>
               </div>
               <div class="product_price">
               ￥<%= product.price %>

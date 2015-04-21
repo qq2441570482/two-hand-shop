@@ -10,21 +10,16 @@ class User < ActiveRecord::Base
 
   belongs_to :major
   belongs_to :grade
-  validates :grade , presence: true, unless: :check_grade_nil?
-
-  def check_grade_nil?
-    grade_id.nil?
-    # true
-  end
+  validates :grade , presence: true, unless: 'grade_id.nil?'
 
   mount_uploader :avatar, AvatarUploader
 
-  has_many :user_products
+  has_many :user_products, dependent: :destroy
   has_many :products, through: :user_products
 
-  has_many :information_users
+  has_many :information_users, dependent: :destroy
   has_many :information, through: :information_users
 
-  # has_many :favorites
-  # has_many :products, through: :favorites
+  validates :phone, format: {with: /^0{0,1}(13[0-9]|15[0-9])[0-9]{8}$/, :multiline => true}, unless: 'phone.nil?'
+
 end

@@ -1,6 +1,12 @@
 <div class="main">
   <div class="container">
     <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <%= link_to '已发布的求购消息', information_users_path, class: 'list-group-item' %>
+          <%= link_to '新增求购消息', new_information_path, class: 'list-group-item' %>
+        </div>
+      </div>
       <div class="col-md-9">
         <div class="panel panel-default">
           <div class="panel-body">
@@ -10,6 +16,9 @@
                 <%= i.label '标题', class: 'col-md-2 control-label' %>
                 <div class="col-md-8">
                   <%= i.text_field :title, class: 'form-control' %>
+                  <% if @information_user.information.errors[:title].any? %>
+                   <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @information_user.information.errors[:title][0], class: 'control-label errors' %>
+                  <% end %>
                 </div>
               </div>
 
@@ -24,6 +33,9 @@
                 <%= i.label '价格', class: 'col-md-2 control-label' %>
                 <div class="col-md-8">
                   <%= i.text_field :price, class: 'form-control' %>
+                  <% if @information_user.information.errors[:price].any? %>
+                   <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @information_user.information.errors[:price][0], class: 'control-label errors' %>
+                  <% end %>
                 </div>
               </div>
 
@@ -31,6 +43,9 @@
                 <%= i.label '描述', class: 'col-md-2 control-label' %>
                 <div class="col-md-8">
                   <%= i.text_area :description, class: 'form-control', rows: 5 %>
+                  <% if @information_user.information.errors[:description].any? %>
+                   <span class="glyphicon glyphicon-exclamation-sign errors" aria-hidden="true"></span><%= label_tag '', @information_user.information.errors[:description][0], class: 'control-label errors' %>
+                  <% end %>
                 </div>
               </div>
 

@@ -6,14 +6,17 @@ zh:
           attributes:
             name:
               blank: '年级名称不能为空'
+              taken: '年级名称已被占用'
         major:
           attributes:
             name:
-              blank: '专业名称不能为空' 
+              blank: '专业名称不能为空'
+              taken: '专业名称已被占用' 
         category:
           attributes:
             name:
               blank: '商品目录名称不能为空'
+              taken: '商品目录名称已被占用'
 
         user:
           attributes:
@@ -26,6 +29,35 @@ zh:
             password_confirmation:
               blank: '确认密码不能为空'
               confirmation: '两次密码输入不一致'
+
+        product:
+          attributes:
+            title:
+              blank: '标题不能为空'
+            price:
+              blank: '价格不能为空'
+              not_a_number: '不是一个数字'
+              greater_than: '价钱要大于0'
+            description:
+              blank: '描述不能为空'
+            avatar:
+              blank: '商品图片不能为空'
+
+        information:
+          attributes:
+            title:
+              blank: '标题不能为空'
+            price: 
+              blank: '价格不能为空'
+              not_a_number: '不是一个数字'
+              greater_than: '价钱要大于0'
+            description:
+              blank: '描述不能为空'
+
+        user:
+          attributes:
+             phone:
+                invalid: '手机号码格式不合法'                    
 
 
   views:
