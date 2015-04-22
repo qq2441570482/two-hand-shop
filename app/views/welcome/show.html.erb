@@ -5,7 +5,7 @@
 	    <% unless @product.avatar.url %>
 	      <%= image_tag 'zwtp.jpg', class: 'show_product_image'  %>
 	    <% else %>
-		  <%= image_tag @product.avatar.url, class: 'show_product_image' %>
+		  <%= image_tag @product.avatar.url(:big), class: 'show_product_image' %>
 	    <% end %>
 	  </div>
 			
@@ -37,6 +37,10 @@
               <% end %>
 	      	</td>
 	      </tr>
+	       <tr>
+	      	<td>价格</td>
+	      	<td>￥<%= @product.price %></td>
+	      </tr>
 	      <tr>
 	      	<td>商品介绍</td>
 	      	<td><%= @product.description %></td>
@@ -44,6 +48,28 @@
 	    </table>
 	    </div>
 	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-offset-2 col-md-9">
+	    <div class="panel panel-default product-comment">
+	      <div class="panel-body">
+	      	<div id="SOHUCS" sid= "<%= @product.id %>"></div>
+			  <script>
+			  (function(){
+			    var appid = 'cyrGl2I4O',
+			    conf = 'prod_76dcdc4e5f778b841e78a35b938c555c';
+			    var doc = document,
+			    s = doc.createElement('script'),
+			    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+			    s.type = 'text/javascript';
+			    s.charset = 'utf-8';
+			    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+			    h.insertBefore(s,h.firstChild);
+			  })()
+			</script>
+	      </div>	
+	    </div>
+	  </div>	
 	</div>
   </div>
 </div>

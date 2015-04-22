@@ -18,11 +18,15 @@
                    <% unless product.avatar.url %>
                      <%= image_tag 'zwtp.jpg', class: 'product_image_index'  %>
                    <% else %>
-                    <%= image_tag product.avatar.url, class: 'product_image' %>
+                    <%= image_tag product.avatar.url(:small), class: 'product_image_index' %>
                    <% end %>
                 <% end %>
               <div class="product_title">
-                <%= product.title[0..7]+'...' %>
+                <% if product.title.length > 12 %>
+                   <%= product.title[0..10]+'...' %>
+                <% else %>
+                   <%= product.title %>
+                <% end %>
               </div>
               <div class="product_price">
               ￥<%= product.price %>
