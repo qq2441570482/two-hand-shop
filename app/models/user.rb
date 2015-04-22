@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :email, format: {with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/}
   validates :email, uniqueness: {case_sensitive: false}
+  validates :phone, format: {with: /^1[3|4|5|8][0-9]\d{8}$/, :multiline => true}, unless: 'phone.nil?'
 
   has_secure_password
 
@@ -19,7 +20,5 @@ class User < ActiveRecord::Base
 
   has_many :information_users, dependent: :destroy
   has_many :information, through: :information_users
-
-  validates :phone, format: {with: /^1[3|4|5|8][0-9]\d{8}$/, :multiline => true}, unless: 'phone.nil?'
 
 end
