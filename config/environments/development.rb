@@ -35,27 +35,24 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.default_options = {from: 'qq2441570482@gmail.com'}
   # config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      # :address => "smtp.mailgun.org",
-      # :port => "587",
-      # :domain => "maimaimai.herokuapp.com",
-      # :authentication => "plain",
-      # :user_name => "postmaster@sandbox933c10602cbd4c109cf9c2e52a901408.mailgun.org",
-      # :password => "770ad14144028809b8787c33a59c6a7e",
-      # :enable_starttls_auto => true
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => 'maimaimai.herokuapp.com',
-    :authentication => :plain,
+      :address => "smtp.mailgun.org",
+      :port => "587",
+      :domain => "maimaimai.herokuapp.com",
+      :authentication => "plain",
+      :user_name => "postmaster@sandbox933c10602cbd4c109cf9c2e52a901408.mailgun.org",
+      :password => "770ad14144028809b8787c33a59c6a7e",
+      :enable_starttls_auto => true
+    # :port           => ENV['MAILGUN_SMTP_PORT'],
+    # :address        => ENV['MAILGUN_SMTP_SERVER'],
+    # :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    # :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    # :domain         => 'maimaimai.herokuapp.com',
+    # :authentication => :plain,
   }
 end
