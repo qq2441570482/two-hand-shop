@@ -43,7 +43,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address => "smtp.mailgun.org",
       :port => "587",
-      :domain => "MYDOMAIN.mailgun.org",
+      :domain => "maimaimai.heroku.com",
       :authentication => "plain",
       :user_name => "postmaster@sandbox933c10602cbd4c109cf9c2e52a901408.mailgun.org",
       :password => "770ad14144028809b8787c33a59c6a7e",
