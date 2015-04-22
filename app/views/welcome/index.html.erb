@@ -18,7 +18,7 @@
                    <% unless product.avatar.url %>
                      <%= image_tag 'zwtp.jpg', class: 'product_image_index'  %>
                    <% else %>
-                    <%= image_tag product.avatar.url(:small), class: 'product_image_index' %>
+                    <%= image_tag product.avatar.url(:big), class: 'product_image_index' %>
                    <% end %>
                 <% end %>
               <div class="product_title">
