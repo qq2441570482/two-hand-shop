@@ -40,19 +40,20 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: "maimaimai.herokuapp.com" }
   config.action_mailer.smtp_settings = {
-      :address => "smtp.mailgun.org",
-      :port => "587",
-      :domain => "maimaimai.herokuapp.com",
-      :authentication => "plain",
-      :user_name => "postmaster@appecfa142100d14c589dfc01eb1120c29a.mailgun.org",
-      :password => "83b1cacb59f32de57f63a88c703c03d3",
-      :enable_starttls_auto => true
-    # :port           => ENV['MAILGUN_SMTP_PORT'],
-    # :address        => ENV['MAILGUN_SMTP_SERVER'],
-    # :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    # :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    # :domain         => 'maimaimai.herokuapp.com',
-    # :authentication => :plain,
+      # :address => "smtp.mailgun.org",
+      # :port => "587",
+      # :domain => "maimaimai.herokuapp.com",
+      # :authentication => "plain",
+      # :user_name => "postmaster@appecfa142100d14c589dfc01eb1120c29a.mailgun.org",
+      # :password => "83b1cacb59f32de57f63a88c703c03d3",
+      # :enable_starttls_auto => true
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'maimaimai.herokuapp.com',
+    :authentication => :plain,
   }
 end
