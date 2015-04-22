@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   has_many :information_users, dependent: :destroy
   has_many :information, through: :information_users
 
-  validates :phone, format: {with: /^0{0,1}(13[0-9]|15[0-9])[0-9]{8}$/, :multiline => true}, unless: 'phone.nil?'
+  validates :phone, format: {with: /^1[3|4|5|8][0-9]\d{8}$/, :multiline => true}, unless: 'phone.nil?'
 
 end

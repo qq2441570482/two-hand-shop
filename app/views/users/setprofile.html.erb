@@ -67,7 +67,11 @@
 
             <div class="form-group">
               <div class="col-md-offset-2 col-md-8">
-                <%= f.submit '提交', class: 'btn btn-danger btn-block' %>
+                <%if @user.info_status %>
+                  <%= f.submit '提交', disabled: true, class: 'btn btn-danger btn-block' %>
+                <% else %>
+                  <%= f.submit '提交', class: 'btn btn-danger btn-block' %> 
+                <% end %>
               </div>
             </div>
 			<% end %>
