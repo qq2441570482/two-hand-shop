@@ -2,7 +2,7 @@ class UserMailer < ActionMailer::Base
   default from: '2441570482@qq.com'	
 
   def welcome
-    mail(:to => 'yqwang@thoughtworks.com')
+    mail(:to => 'qq2441570482@gmail.com')
   end
 
   def verifyemail(user,number)
