@@ -45,8 +45,8 @@ Rails.application.configure do
       :port => "587",
       :domain => "maimaimai.herokuapp.com",
       :authentication => "plain",
-      :user_name => "postmaster@sandbox933c10602cbd4c109cf9c2e52a901408.mailgun.org",
-      :password => "770ad14144028809b8787c33a59c6a7e",
+      :user_name => "postmaster@appecfa142100d14c589dfc01eb1120c29a.mailgun.org",
+      :password => "83b1cacb59f32de57f63a88c703c03d3",
       :enable_starttls_auto => true
     # :port           => ENV['MAILGUN_SMTP_PORT'],
     # :address        => ENV['MAILGUN_SMTP_SERVER'],
