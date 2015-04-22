@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  default from: '2441570482@qq.com'	
 
   def welcome
     mail(:to => 'yqwang@thoughtworks.com')
