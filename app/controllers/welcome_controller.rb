@@ -5,6 +5,9 @@ class WelcomeController < ApplicationController
     if params[:condition].present?
     	@products = @products.where(category_id: params[:condition].to_i)
     end
+    if params[:search].present?
+      @products = @products.where('title like ?', '%' + params[:search] + '%')
+    end
   end
 
   def show

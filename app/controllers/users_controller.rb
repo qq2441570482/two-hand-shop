@@ -80,10 +80,10 @@ class UsersController < ApplicationController
     @user.username = params[:user][:username]
     @user.grade_id = params[:grade].to_i
     @user.major_id = params[:major].to_i
-    @user.phone = params[:user][:phone]
+    @user.phone = params[:user][:phone]  unless params[:user][:phone].blank?
     @user.address = params[:user][:address]
     @user.gender = string_transfer_bool(params[:user][:gender])
-    if @user.username? && @user.grade_id? && @user.major_id? && @user.phone? && @user.address? && @user.gender?
+    if @user.username? && @user.grade_id? && @user.major_id? && @user.phone? && @user.address? && @user.gender != nil
        @user.info_status = true
     end    
     if @user.save
