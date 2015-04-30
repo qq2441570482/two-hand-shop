@@ -12,7 +12,7 @@ class UsersController < ApplicationController
                                      :applyseller]
 
   before_action :new_a_user, only: [:new, :create, :register_center]
-  before_action :judge_user_status, only: [:index]
+  before_action :judge_user_status, only: [:index, :new, :setstatus, :destroy]
 
   include UsersHelper
   

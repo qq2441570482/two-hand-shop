@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.main{
+	min-height: 520px;
+}
+
+.bottomDiv{
+	text-align: center;
+}

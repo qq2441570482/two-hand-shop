@@ -3,7 +3,7 @@ class GradesController < ApplicationController
   before_action :find_a_grade, only: [:destroy, :edit, :update]
   before_action :new_a_grade, only: [:new, :create]
   before_action :create_and_update, only: [:create, :update]
-  before_action :judge_user_status, only: :index
+  before_action :judge_user_status, only: [:index, :new, :edit, :create, :destroy, :update]
 
   def index
   	@grades = Grade.all

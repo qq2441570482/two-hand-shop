@@ -51,7 +51,7 @@
       </ul>
        <%= form_tag root_path, method: :get, :class => 'nav navbar-form navbar-right' do %>
          <div class="input-group">
-            <%= text_field_tag :search, nil, class: 'form-control' %>
+            <%= text_field_tag :search, nil, placeholder: '搜索...', class: 'form-control' %>
             <div class="input-group-btn">
               <%= submit_tag 'Go', class: 'btn btn-default' %>
             </div>

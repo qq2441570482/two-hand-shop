@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :require_login
   before_action :find_a_product, only: [:setstatus, :destroy]
   before_action :require_complete_info, only: :new
-  before_action :judge_user_status, only: :index
+  before_action :judge_user_status, only: [:index, :destroy, :setstatus]
 
   def index
     @products = Product.all.page(params[:page]).per(4)

@@ -3,7 +3,7 @@ class MajorsController < ApplicationController
   before_action :find_a_major, only: [:edit,:update, :destroy]
   before_action :new_a_major, only: [:new, :create]
   before_action :create_and_update, only: [:create, :update]
-  before_action :judge_user_status, only: :index
+  before_action :judge_user_status, only: [:index, :destroy, :new, :edit, :create, :update]
 
   def index
   	@majors = Major.all
