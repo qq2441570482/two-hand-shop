@@ -11,31 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417055054) do
+ActiveRecord::Schema.define(version: 20150417001553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "favorites", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "grades", force: true do |t|
+  create_table "grades", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "information", force: true do |t|
+  create_table "information", force: :cascade do |t|
     t.string   "title"
     t.float    "price"
     t.text     "description"
@@ -44,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150417055054) do
     t.datetime "updated_at"
   end
 
-  create_table "information_users", force: true do |t|
+  create_table "information_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "information_id"
     t.boolean  "status"
@@ -52,13 +45,13 @@ ActiveRecord::Schema.define(version: 20150417055054) do
     t.datetime "updated_at"
   end
 
-  create_table "majors", force: true do |t|
+  create_table "majors", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "title"
     t.float    "price"
     t.text     "description"
@@ -69,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150417055054) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
     t.string   "resource_type"
@@ -80,14 +73,14 @@ ActiveRecord::Schema.define(version: 20150417055054) do
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
-  create_table "user_products", force: true do |t|
+  create_table "user_products", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
     t.boolean  "gender"
@@ -104,7 +97,7 @@ ActiveRecord::Schema.define(version: 20150417055054) do
     t.string   "avatar"
   end
 
-  create_table "users_roles", id: false, force: true do |t|
+  create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
