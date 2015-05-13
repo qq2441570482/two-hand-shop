@@ -15,7 +15,10 @@ class WelcomeController < ApplicationController
   end
 
   def ask
-    @information_users = InformationUser.where(status: true).page(params[:page]).per(4)
+    @informations = Information.all.page(params[:page]).per(4)
+    if params[:search].present?
+      @informations = @informations.where('title like ?', '%' + params[:search] + '%')
+    end
   end
 
 end

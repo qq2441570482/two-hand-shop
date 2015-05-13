@@ -5,53 +5,74 @@
 	  <div class="col-md-9">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
-		  	<h3>求购专区</h3>
+		  	<h3>求购专区
+		  	<button type="button" class="btn btn-primary pull-right search-button" data-toggle="modal" data-target="#myModal">搜索求购信息</button></h3>
 		  </div>
 		  <div class="panel-body">
-		    <% @information_users.each do |information_user| %>
+		    <% @informations.each do |information| %>
 		    <div class="panel">
 		      <div class="panel-body">
 		      	<table class="table">
 		      	<tr>
-		      	    <td colspan="2"><h4><%= information_user.information.title %></h4></td>
+		      	    <td colspan="2"><h4><%= information.title %></h4></td>
 		      	</tr>
 		      	  <tr>
 		      	  	<td>买家</td>
-		      	  	<td><%= information_user.user.username %></td>
+		      	  	<td><%= information.users[0].username %></td>
 		      	  </tr>
 		      	  <tr>
 		      	  	<td>专业</td>
-		      	  	<td><%= information_user.user.grade.name %><%= information_user.user.major.name %></td>
+		      	  	<td><%= information.users[0].grade.name %><%= information.users[0].major.name %></td>
 		      	  </tr>
 		      	  <tr>
 		      	  	<td>手机</td>
-		      	  	<td><%= information_user.user.phone %></td>
+		      	  	<td><%= information.users[0].phone %></td>
 		      	  </tr>
 
 		      	  <tr>
 		      	  	<td>邮箱</td>
-		      	  	<td><%= information_user.user.email %></td>
+		      	  	<td><%= information.users[0].email %></td>
 		      	  </tr>
 
 		      	   <tr>
                     <td>价格</td>
-                    <td>￥<%= information_user.information.price  %></td>
+                    <td>￥<%= information.price  %></td>
                   </tr>
 
 	              <tr>
 	                <td>描述</td>
-	                <td><%= information_user.information.description  %></td>
+	                <td><%= information.description  %></td>
 	              </tr>   		
 		      	</table>
 		      </div>	
 		    </div>
 		    <% end %>
 		    <div class="pull-right">
-		      <%= paginate @information_users %>
+		      <%= paginate @informations %>
 		    </div>
 		  </div>
 		</div>
 	  </div>
 	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	  <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">搜索求购信息</h4>
+        </div>
+        <div class="modal-body">
+          <%= form_tag ask_path, method: :get do %>
+          <div class="input-group">
+            <%= text_field_tag :search, nil, placeholder: '搜索...', class: 'form-control' %>
+            <div class="input-group-btn">
+              <%= submit_tag 'Go', class: 'btn btn-default' %>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+  </div>
+</div>
   </div>
 </div>
