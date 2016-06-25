@@ -13,7 +13,6 @@ class GradesController < ApplicationController
   end
 
   def destroy
-  	#这里同时将外键引用置为null
   	@grade.destroy
   	redirect_to grades_path
   end

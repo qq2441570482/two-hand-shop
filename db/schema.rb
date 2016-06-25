@@ -13,59 +13,56 @@
 
 ActiveRecord::Schema.define(version: 20150417001553) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "grades", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "information", force: :cascade do |t|
-    t.string   "title"
-    t.float    "price"
-    t.text     "description"
-    t.integer  "category_id"
+    t.string   "title",       limit: 255
+    t.float    "price",       limit: 24
+    t.text     "description", limit: 65535
+    t.integer  "category_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "information_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "information_id"
-    t.boolean  "status"
+    t.integer  "user_id",        limit: 4
+    t.integer  "information_id", limit: 4
+    t.boolean  "status",         limit: 1
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "majors", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "title"
-    t.float    "price"
-    t.text     "description"
-    t.boolean  "status"
-    t.string   "avatar"
-    t.integer  "category_id"
+    t.string   "title",       limit: 255
+    t.float    "price",       limit: 24
+    t.text     "description", limit: 65535
+    t.boolean  "status",      limit: 1
+    t.string   "avatar",      limit: 255
+    t.integer  "category_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "resource_id"
-    t.string   "resource_type"
+    t.string   "name",          limit: 255
+    t.integer  "resource_id",   limit: 4
+    t.string   "resource_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,32 +71,32 @@ ActiveRecord::Schema.define(version: 20150417001553) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "user_products", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "product_id"
+    t.integer  "user_id",    limit: 4
+    t.integer  "product_id", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
-    t.boolean  "gender"
-    t.string   "phone"
-    t.string   "address"
-    t.string   "password_digest"
-    t.boolean  "status"
-    t.boolean  "email_status"
-    t.boolean  "info_status"
-    t.integer  "major_id"
-    t.integer  "grade_id"
+    t.string   "username",        limit: 255
+    t.string   "email",           limit: 255
+    t.boolean  "gender",          limit: 1
+    t.string   "phone",           limit: 255
+    t.string   "address",         limit: 255
+    t.string   "password_digest", limit: 255
+    t.boolean  "status",          limit: 1
+    t.boolean  "email_status",    limit: 1
+    t.boolean  "info_status",     limit: 1
+    t.integer  "major_id",        limit: 4
+    t.integer  "grade_id",        limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar"
+    t.string   "avatar",          limit: 255
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
+    t.integer "user_id", limit: 4
+    t.integer "role_id", limit: 4
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree

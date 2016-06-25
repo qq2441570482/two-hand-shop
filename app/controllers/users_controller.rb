@@ -24,9 +24,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def setprofile
-  end
-
   def auth
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:user][:password])&& @user.status == true
@@ -45,8 +42,8 @@ class UsersController < ApplicationController
     @user.status = true
     @user.info_status = false
     if @user.save
-      sign_in(@user)
       give_a_person_a_status(@user)
+      sign_in(@user)
       redirect_to root_path
     else
       render :register
@@ -56,9 +53,6 @@ class UsersController < ApplicationController
   def logout
     session.delete :user_id
     redirect_to root_path
-  end
-
-  def changepassword
   end
 
   def confirmchangepassword
@@ -187,15 +181,12 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-  def applyseller
-  end
-
   private
   def string_transfer_bool(gender)
     if gender == 'true'
-      return true
+      true
     else
-      return false
+      false
     end
   end
 

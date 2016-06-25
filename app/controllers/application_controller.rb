@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
    def judge_user_status
     if session[:user_id]
       user = User.find(session[:user_id])
-      unless  user.roles[0].name == 'admin'
+      unless user.roles[0].name == 'admin'
         session.delete :user_id
         redirect_to login_path
       end
