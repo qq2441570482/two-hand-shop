@@ -8,7 +8,7 @@ module.exports = function (grunt) {
       static_mappings: {
         files: [
           {
-            src: './bower_components/bootstrap/dist/js/bootstrap.js',
+            src: './node_modules/bootstrap/dist/js/bootstrap.js',
             dest: './app/assets/javascripts/bootstrap.min.js'
           }
         ]
@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     },
     concat_css: {
       all: {
-        src: ["./bower_components/bootstrap/dist/css/bootstrap.css"],
+        src: ["./node_modules/bootstrap/dist/css/bootstrap.css"],
         dest: "./app/assets/stylesheets/bootstrap.min.css"
       }
     }
